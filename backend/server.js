@@ -6,28 +6,30 @@ const connectDB = require('./config/db');
 dotenv.config();
 
 const app = express();
-const cors = require("cors");
 
+// CORS
 app.use(
   cors({
     origin: [
       "http://localhost:3000",
       "https://cine-sccope-meghana18.vercel.app",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
+
+app.options("*", cors());
+
 app.use(express.json());
 
 // Connect MongoDB
 connectDB();
 
-// Import routes
+// Routes
 const authRoutes = require('./routes/auth');
 const reviewRoutes = require('./routes/review');
 
-// Use routes
 app.use('/api/auth', authRoutes);
 app.use('/api/reviews', reviewRoutes);
 
@@ -37,4 +39,6 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
