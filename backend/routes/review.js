@@ -31,16 +31,53 @@ router.post('/', verifyToken, async (req, res) => {
 });
 
 // Like a review
+// Toggle Like
 router.post('/:id/like', verifyToken, async (req, res) => {
   try {
     const review = await Review.findById(req.params.id);
-    if (!review) return res.status(404).json({ message: 'Review not found' });
 
+    if (!review) {
+      return res.status(404).json({
+        message: 'Review not found',
+      });
+    }
+
+    const userEmail = req.user.email;
+
+    const alreadyLiked = review.likedBy.includes(userEmail);
+
+    if (alreadyLiked) {
+      // Remove Like
+      review.likedBy = review.likedBy.filter(
+        email => email !== userEmail
+      );
+
+      review.likes = Math.max(0, review.likes - 1);
+
+      await review.save();
+
+      return res.json({
+        liked: false,
+        likes: review.likes,
+      });
+    }
+
+    // Add Like
+    review.likedBy.push(userEmail);
     review.likes += 1;
+
     await review.save();
-    res.json({ message: 'Like added', likes: review.likes });
+
+    res.json({
+      liked: true,
+      likes: review.likes,
+    });
+
   } catch (err) {
-    res.status(500).json({ message: 'Error adding like' });
+    console.error(err);
+    res.status(500).json({
+      message: 'Error updating like',
+    });
   }
 });
 

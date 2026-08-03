@@ -49,13 +49,23 @@ function Dashboard() {
   };
 
   const handleLike = async (id) => {
-    const token = localStorage.getItem('token');
-    const res = await fetch(`http://localhost:5000/api/reviews/${id}/like`, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    if (res.ok) fetchReviews();
-  };
+  const token = localStorage.getItem('token');
+
+  const res = await fetch(`http://localhost:5000/api/reviews/${id}/like`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await res.json();
+
+  if (res.ok) {
+    fetchReviews();
+  } else {
+    alert(data.message);
+  }
+};
 
   const handleCommentSubmit = async (id) => {
     const text = commentInputs[id];
