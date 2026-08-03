@@ -13,7 +13,8 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', {
+      const API_URL = process.env.REACT_APP_API_URL;
+      const res = await axios.post(`${API_URL}/auth/login`, {
         email,
         password,
       });

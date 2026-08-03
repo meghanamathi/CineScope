@@ -8,10 +8,9 @@ function Dashboard() {
   const [commentInputs, setCommentInputs] = useState({});
   const [message, setMessage] = useState('');
   const API_KEY = 'd364a04c'; // ✅ keep this as a string
-
+  const API_URL = process.env.REACT_APP_API_URL;
   const fetchReviews = async () => {
-    const res = await fetch('http://localhost:5000/api/reviews');
-    const data = await res.json();
+   const res = await fetch(`${API_URL}/reviews`);
     const enriched = await Promise.all(
       data.map(async (r) => {
         const m = await fetch(
@@ -31,7 +30,7 @@ function Dashboard() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    const res = await fetch('http://localhost:5000/api/reviews', {
+    const res = await fetch(`${API_URL}/reviews`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +50,7 @@ function Dashboard() {
   const handleLike = async (id) => {
   const token = localStorage.getItem('token');
 
-  const res = await fetch(`http://localhost:5000/api/reviews/${id}/like`, {
+  const res = await fetch(`${API_URL}/reviews/${id}/like`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -71,7 +70,7 @@ function Dashboard() {
     const text = commentInputs[id];
     if (!text) return;
     const token = localStorage.getItem('token');
-    const res = await fetch(`http://localhost:5000/api/reviews/${id}/comment`, {
+    const res = await fetch(`${API_URL}/reviews/${id}/comment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

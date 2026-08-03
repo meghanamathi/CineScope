@@ -6,7 +6,16 @@ const connectDB = require('./config/db');
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000", // Local React app
+      "https://your-vercel-app.vercel.app", // Replace after deploying frontend
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // Connect MongoDB
