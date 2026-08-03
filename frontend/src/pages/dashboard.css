@@ -1,0 +1,242 @@
+/* 🌌 General Page Styling */
+body {
+  background-color: #0b0b0b;
+  color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🎬 Dashboard Container */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+/* 🔝 Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #111, #1a1a1a);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  color: #ff3d3d;
+  letter-spacing: 2px;
+}
+
+/* 🚪 Logout Button */
+.logout-btn {
+  background: #ff3d3d;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #ff6363;
+}
+
+/* 📝 Review Form */
+.review-form {
+  background: #1a1a1a;
+  padding: 25px;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.15);
+}
+
+.review-form h2 {
+  color: #ff3d3d;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.review-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.review-form input,
+.review-form textarea {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.review-form input:focus,
+.review-form textarea:focus {
+  border-color: #ff3d3d;
+  box-shadow: 0 0 8px #ff3d3d;
+}
+
+.review-form button {
+  background: #ff3d3d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.review-form button:hover {
+  background: #ff6363;
+}
+
+.message {
+  text-align: center;
+  color: #00ff88;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* 💬 Reviews Section */
+.reviews-section {
+  margin-top: 40px;
+}
+
+.reviews-section h2 {
+  text-align: center;
+  color: #ff3d3d;
+  margin-bottom: 25px;
+}
+
+/* 🎞️ Review Card */
+.review-card {
+  background: #1a1a1a;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.15);
+  margin-bottom: 25px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.review-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.25);
+}
+
+/* 🎬 Movie Poster */
+.movie-poster {
+  width: 120px;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid #ff3d3d;
+}
+
+/* 🗒️ Review Content */
+.review-content h3 {
+  color: #ff3d3d;
+  margin-bottom: 5px;
+}
+
+.review-content p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+.user-review {
+  font-style: italic;
+  color: #ddd;
+  margin-top: 10px;
+  background: #222;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* ❤️ Like Button */
+.review-actions {
+  margin-top: 10px;
+}
+
+.review-actions button {
+  background: transparent;
+  border: 1px solid #ff3d3d;
+  color: #ff3d3d;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.review-actions button:hover {
+  background: #ff3d3d;
+  color: white;
+}
+
+/* 💬 Comments Section */
+.comments-section {
+  margin-top: 20px;
+  background: #222;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.comments-section h4 {
+  color: #ff3d3d;
+  margin-bottom: 10px;
+}
+
+.comment {
+  background: #333;
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.comment strong {
+  color: #ff6363;
+}
+
+/* 🗨️ Comment Input */
+.comment-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.comment-input input {
+  flex: 1;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+}
+
+.comment-input button {
+  background: #ff3d3d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.comment-input button:hover {
+  background: #ff6363;
+}
