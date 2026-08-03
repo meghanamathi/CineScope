@@ -6,11 +6,13 @@ const connectDB = require('./config/db');
 dotenv.config();
 
 const app = express();
+const cors = require("cors");
+
 app.use(
   cors({
     origin: [
-      "http://localhost:3000", // Local React app
-      "https://your-vercel-app.vercel.app", // Replace after deploying frontend
+      "http://localhost:3000",
+      "https://cine-sccope-meghana18.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
