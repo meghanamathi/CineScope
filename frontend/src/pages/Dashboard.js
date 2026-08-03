@@ -9,19 +9,27 @@ function Dashboard() {
   const [message, setMessage] = useState('');
   const API_KEY = 'd364a04c'; // ✅ keep this as a string
   const API_URL = process.env.REACT_APP_API_URL;
-  const fetchReviews = async () => {
-   const res = await fetch(`${API_URL}/reviews`);
-    const enriched = await Promise.all(
-      data.map(async (r) => {
-        const m = await fetch(
-          `https://www.omdbapi.com/?t=${encodeURIComponent(r.movieTitle)}&apikey=${API_KEY}`
-        );
-        const movieData = await m.json();
-        return { ...r, movieData };
-      })
-    );
-    setReviews(enriched);
-  };
+ const fetchReviews = async () => {
+  const res = await fetch(`${API_URL}/reviews`);
+  const data = await res.json();
+
+  const enriched = await Promise.all(
+    data.map(async (r) => {
+      const m = await fetch(
+        `https://www.omdbapi.com/?t=${encodeURIComponent(r.movieTitle)}&apikey=${API_KEY}`
+      );
+
+      const movieData = await m.json();
+
+      return {
+        ...r,
+        movieData,
+      };
+    })
+  );
+
+  setReviews(enriched);
+};
 
   useEffect(() => {
     fetchReviews();
